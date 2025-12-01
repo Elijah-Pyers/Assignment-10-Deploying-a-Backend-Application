@@ -340,6 +340,19 @@ app.delete('/api/tasks/:id', requireAuth, async (req, res) => {
   }
 });
 
+// Auto-deploy test endpoint
+app.get('/api/info', (req, res) => {
+  res.json({
+    status: "OK",
+    message: "Auto-deploy test successful!",
+    version: "1.0.0",
+    deployedAt: new Date().toISOString(),
+    environment: process.env.NODE_ENV || "development",
+    runningPort: PORT
+  });
+});
+
+
 
 // Error handling & 404
 
